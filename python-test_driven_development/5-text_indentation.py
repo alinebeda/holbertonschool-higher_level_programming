@@ -1,21 +1,31 @@
 #!/usr/bin/python3
-"""print a text with 2 new lines after each of these characters: ., ? and :"""
+"""
+indent text fter . : ?
+"""
 
 
 def text_indentation(text):
-    """Prints a text with 2 new lines after each ., ? and : characters.
+    """indent text after certain character
 
     Args:
-        text (str): Input text.
+    text (str): text to indent
 
     Raises:
-        TypeError: If text is not a string.
+    TypeError: text is notr a string
     """
 
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    for char in ['.', '?', ':']:
-        text = text.replace(char, f'{char}\n\n')
-
-    print(text, end="")
+    characters = [".", ":", "?"]
+    i = 0
+    while i < len(text):
+        if text[i] in characters:
+            print(text[i], end="")
+            print("\n")
+            i += 1
+            while i < len(text) and text[i] == ' ':
+                i += 1
+            continue
+        print(text[i], end="")
+        i += 1
